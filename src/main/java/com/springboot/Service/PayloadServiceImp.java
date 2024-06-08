@@ -48,11 +48,14 @@ public class PayloadServiceImp implements PayloadService{
 		return repository.save(payload);
 	}
 
-	
+	//Delete Pay load
 	@Override
 	public void deletePayload(int id) {
 		// TODO Auto-generated method stub
-		
+		if(checkId(id) == false) {
+			throw new BusinessException("605", "Id in not exist");
+		}
+		repository.deleteById(id);
 	}
 
 	//Retrieve All Data

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,5 +47,11 @@ public class HomeController {
 		payload.setId(id);
 		Payload updatePayload = serviceImp.updatePayload(payload);
 		return new ResponseEntity<Payload>(updatePayload, HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/load/{id}")
+	public ResponseEntity<?> deletePayload(@PathVariable int id){
+		serviceImp.deletePayload(id);
+		return new ResponseEntity<Payload>(HttpStatus.OK);
 	}
 }
