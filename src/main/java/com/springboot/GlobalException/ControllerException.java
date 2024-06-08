@@ -20,6 +20,9 @@ public class ControllerException extends ResponseEntityExceptionHandler{
 	
 	@ExceptionHandler(BusinessException.class)
 	public ResponseEntity<String> handleIdNotExist(BusinessException exception){
+		if(exception.getErrorCode() == "604") {
+			return new ResponseEntity<String>("Invalid Id",HttpStatus.NOT_FOUND);
+		}
 		return new ResponseEntity<String>("Id does not exist",HttpStatus.NOT_FOUND);
 	}
 	

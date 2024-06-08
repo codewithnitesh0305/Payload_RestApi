@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,5 +39,12 @@ public class HomeController {
 	public ResponseEntity<?> getAllPayload(){
 		List<Payload> list = serviceImp.getAllPayload();
 		return new ResponseEntity<List<Payload>>(list,HttpStatus.FOUND);
+	}
+	
+	@PutMapping("/load/{id}")
+	public ResponseEntity<?> updatePayload(@PathVariable int id, @RequestBody Payload payload){
+		payload.setId(id);
+		Payload updatePayload = serviceImp.updatePayload(payload);
+		return new ResponseEntity<Payload>(updatePayload, HttpStatus.OK);
 	}
 }

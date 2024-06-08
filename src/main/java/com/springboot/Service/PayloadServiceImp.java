@@ -36,18 +36,26 @@ public class PayloadServiceImp implements PayloadService{
 		return repository.save(payload);
 	}
 
+	//Update Pay load 
 	@Override
 	public Payload updatePayload(Payload payload) {
 		// TODO Auto-generated method stub
-		return null;
+		if(checkId(payload.getId()) == false) {
+			throw new BusinessException("604", "Invalid Id");
+		}
+		payload.setShipperId(UUID.randomUUID().toString());
+		payload.setDate(LocalDate.now());
+		return repository.save(payload);
 	}
 
+	
 	@Override
 	public void deletePayload(int id) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	//Retrieve All Data
 	@Override
 	public List<Payload> getAllPayload() {
 		// TODO Auto-generated method stub
@@ -58,6 +66,7 @@ public class PayloadServiceImp implements PayloadService{
 		return getAllPayload;
 	}
 	
+	//Check Id is exist or not
 	@Override
 	public boolean checkId(int id) {
 		// TODO Auto-generated method stub
@@ -65,6 +74,7 @@ public class PayloadServiceImp implements PayloadService{
 		return checkId;
 	}
 
+	//Retrieve data by id
 	@Override
 	public Payload getPayloadById(int id) {
 		// TODO Auto-generated method stub
