@@ -24,6 +24,8 @@ public class ControllerException extends ResponseEntityExceptionHandler{
 			return new ResponseEntity<String>("Invalid Id",HttpStatus.NOT_FOUND);
 		}else if(exception.getErrorCode() == "605") {
 			return new ResponseEntity<String>("Id not exist",HttpStatus.NOT_FOUND);
+		}else if(exception.getErrorCode() == "606") {
+			return new ResponseEntity<String>("Chipper Id in invalid",HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<String>("Id does not exist",HttpStatus.NOT_FOUND);
 	}

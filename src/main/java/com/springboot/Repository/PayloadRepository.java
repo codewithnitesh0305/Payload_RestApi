@@ -8,4 +8,5 @@ public interface PayloadRepository extends JpaRepository<Payload, Integer>{
 
 	public Payload findPayloadById(int id);
 	public boolean existsById(int id);
+	public Payload findByShipperId(String shipperId);
 }

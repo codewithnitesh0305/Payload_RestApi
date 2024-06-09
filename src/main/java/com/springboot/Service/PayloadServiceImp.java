@@ -88,5 +88,15 @@ public class PayloadServiceImp implements PayloadService{
 	}
 
 	
+	@Override
+	public Payload getPayloadByShipperId(String shipperId) {
+		// TODO Auto-generated method stub
+		
+		return repository.findByShipperId(shipperId);
+	}
+
+	
+
+	
 
 }

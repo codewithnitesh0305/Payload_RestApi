@@ -12,4 +12,5 @@ public interface PayloadService {
 	public List<Payload> getAllPayload();
 	public Payload getPayloadById(int id);
 	public boolean checkId(int id);
+	public Payload getPayloadByShipperId(String shipperId);
 }

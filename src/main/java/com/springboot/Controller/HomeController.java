@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.Entity.Payload;
@@ -53,5 +54,11 @@ public class HomeController {
 	public ResponseEntity<?> deletePayload(@PathVariable int id){
 		serviceImp.deletePayload(id);
 		return new ResponseEntity<Payload>(HttpStatus.OK);
+	}
+	
+	@GetMapping("/load/shipperId")
+	public ResponseEntity<?> getPayloadByShipperId(@RequestParam("shipperId") String shipperId){
+		Payload payload = serviceImp.getPayloadByShipperId(shipperId);
+		return new ResponseEntity<Payload>(payload,HttpStatus.FOUND);
 	}
 }
